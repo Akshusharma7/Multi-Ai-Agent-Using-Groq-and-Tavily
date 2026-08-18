@@ -9,7 +9,7 @@ from app.config.settings import Settings
 
 
 def get_responce_from_ai_agent(llm_id,query,allow_search,system_prompt):
-    llm = ChatGroq(model=llm_id, api_key=Settings().GROQ_API_KEY, temperature=0.7, max_tokens=1000)
+    llm = ChatGroq(model=llm_id, api_key=Settings().GROQ_API_KEY, temperature=0.6, max_tokens=1000)
     tools = [TavilySearchResults(max_results=2)] if allow_search else []
 
     agent = create_react_agent(model=llm, tools=tools, state_modifier=system_prompt)
